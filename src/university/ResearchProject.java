@@ -20,11 +20,8 @@ public class ResearchProject {
         this.participants = new ArrayList<>();
     }
 
-    public void addParticipant(Object obj) throws NonResearcherException {
-    	if (!(obj instanceof Researcher)) {
-            throw new NonResearcherException("User is not a Researcher");
-        }
-        participants.add((Researcher) obj);
+    public void addParticipant(Researcher r) {
+        participants.add(r);
     }
 
     public String getTopic() {

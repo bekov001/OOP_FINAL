@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static void loginMenu() {
-        System.out.println("\nAuthorization: ");
+        System.out.println("\nAuthorization:");
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
@@ -54,12 +54,12 @@ public class Main {
         User user = authenticate(email, password);
 
         if (user == null) {
-            System.out.println("Invalid email or password");
+            System.out.println("Invalid email or password.");
             return;
         }
 
         System.out.println("\nLogin successful!");
-        System.out.println("Welcome, " + user.firstName + " " + user.lastName);
+        System.out.println("Welcome, " + user.getFirstName() + " " + user.getLastName());
         System.out.println("Role: " + getRole(user));
 
         userMenu(user);
@@ -67,7 +67,7 @@ public class Main {
 
     private static User authenticate(String email, String password) {
         for (User user : users) {
-            if (user.email.equals(email) && user.password.equals(password)) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 return user;
             }
         }
@@ -78,7 +78,7 @@ public class Main {
         boolean loggedIn = true;
 
         while (loggedIn) {
-            System.out.println("\n User Menu:");
+            System.out.println("\nUser Menu:");
             System.out.println("1. View profile");
             System.out.println("2. Logout");
             System.out.print("Choose option: ");
@@ -100,29 +100,30 @@ public class Main {
     }
 
     private static void showProfile(User user) {
-        System.out.println("\nProfile: ");
-        System.out.println("ID: " + user.id);
-        System.out.println("Name: " + user.firstName + " " + user.lastName);
-        System.out.println("Email: " + user.email);
+        System.out.println("\nProfile:");
+        System.out.println("ID: " + user.getId());
+        System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
+        System.out.println("Email: " + user.getEmail());
         System.out.println("Role: " + getRole(user));
 
         if (user instanceof Student) {
             Student s = (Student) user;
-            System.out.println("Major: " + s.major);
-            System.out.println("Year: " + s.year);
-            System.out.println("GPA: " + s.gpa);
-            System.out.println("Total credits: " + s.totalCredits);
+            System.out.println("Student ID: " + s.getStudentId());
+            System.out.println("Major: " + s.getMajor());
+            System.out.println("Year: " + s.getYearOfStudy());
+            System.out.println("GPA: " + s.getGpa());
+            System.out.println("Total credits: " + s.getTotalCredits());
         } else if (user instanceof Teacher) {
             Teacher t = (Teacher) user;
-            System.out.println("Teacher title: " + t.title);
-            System.out.println("Salary: " + t.salary);
+            System.out.println("Teacher title: " + t.getTitle());
+            System.out.println("Salary: " + t.getSalary());
         } else if (user instanceof Manager) {
             Manager m = (Manager) user;
-            System.out.println("Manager type: " + m.type);
-            System.out.println("Salary: " + m.salary);
+            System.out.println("Manager type: " + m.getType());
+            System.out.println("Salary: " + m.getSalary());
         } else if (user instanceof Employee) {
             Employee e = (Employee) user;
-            System.out.println("Salary: " + e.salary);
+            System.out.println("Salary: " + e.getSalary());
         }
     }
 
@@ -138,46 +139,47 @@ public class Main {
     private static void showDemoAccounts() {
         System.out.println("\nDemo Accounts:");
         for (User user : users) {
-            System.out.println(getRole(user) + ": " + user.email + " / " + user.password);
+            System.out.println(getRole(user) + ": " + user.getEmail() + " / " + user.getPassword());
         }
     }
 
     private static void seedUsers() {
         Admin admin = new Admin();
-        admin.id = "A001";
-        admin.firstName = "Admin";
-        admin.lastName = "One";
-        admin.email = "admin@uni.kz";
-        admin.password = "admin123";
+        admin.setId("A001");
+        admin.setFirstName("Admin");
+        admin.setLastName("One");
+        admin.setEmail("admin@uni.kz");
+        admin.setPassword("admin123");
 
         Manager manager = new Manager();
-        manager.id = "M001";
-        manager.firstName = "Miras";
-        manager.lastName = "Manager";
-        manager.email = "manager@uni.kz";
-        manager.password = "manager123";
-        manager.salary = 350000;
-        manager.type = ManagerType.OR;
+        manager.setId("M001");
+        manager.setFirstName("Miras");
+        manager.setLastName("Manager");
+        manager.setEmail("manager@uni.kz");
+        manager.setPassword("manager123");
+        manager.setSalary(350000);
+        manager.setType(ManagerType.OR);
 
         Teacher teacher = new Teacher();
-        teacher.id = "T001";
-        teacher.firstName = "Aruzhan";
-        teacher.lastName = "Teacher";
-        teacher.email = "teacher@uni.kz";
-        teacher.password = "teacher123";
-        teacher.salary = 400000;
-        teacher.title = TeacherTitle.PROFESSOR;
+        teacher.setId("T001");
+        teacher.setFirstName("Aruzhan");
+        teacher.setLastName("Teacher");
+        teacher.setEmail("teacher@uni.kz");
+        teacher.setPassword("teacher123");
+        teacher.setSalary(400000);
+        teacher.setTitle(TeacherTitle.PROFESSOR);
 
         Student student = new Student();
-        student.id = "S001";
-        student.firstName = "Aliya";
-        student.lastName = "Student";
-        student.email = "student@uni.kz";
-        student.password = "student123";
-        student.major = "Computer Science";
-        student.year = 2;
-        student.gpa = 3.5;
-        student.totalCredits = 18;
+        student.setId("S001");
+        student.setFirstName("Aliya");
+        student.setLastName("Student");
+        student.setEmail("student@uni.kz");
+        student.setPassword("student123");
+        student.setStudentId("ST001");
+        student.setMajor("Computer Science");
+        student.setYearOfStudy(2);
+        student.setGpa(3.5);
+        student.setTotalCredits(18);
 
         users.add(admin);
         users.add(manager);
