@@ -1,0 +1,12 @@
+package university;
+
+import java.util.Comparator;
+
+public interface Researcher {
+
+    int calculateHIndex();
+
+    void printPapers();
+
+    void PrintPapers(Comparator c);
+}
