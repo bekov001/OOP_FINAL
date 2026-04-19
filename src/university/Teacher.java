@@ -4,7 +4,19 @@ import java.util.Comparator;
 
 public class Teacher extends Employee implements Researcher {
 
-    protected TeacherTitle title;
+    private TeacherTitle title;
+
+    public Teacher() {
+        super();
+    }
+
+    public TeacherTitle getTitle() {
+        return title;
+    }
+
+    public void setTitle(TeacherTitle title) {
+        this.title = title;
+    }
 
     public void putMark(Student s, Course c, int score) {
     }
@@ -18,10 +30,6 @@ public class Teacher extends Employee implements Researcher {
     }
 
     @Override
-    public void printPapers() {
-    }
-
-    @Override
-    public void PrintPapers(Comparator c) {
+    public void printPapers(Comparator<ResearchPaper> c) {
     }
 }

@@ -2,7 +2,7 @@ package university;
 
 public enum TeacherTitle {
     TUTOR,
-    LECTOR,
-    SENIOR_LECTOR,
+    LECTURER,
+    SENIOR_LECTURER,
     PROFESSOR
 }

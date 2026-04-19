@@ -6,7 +6,5 @@ public interface Researcher {
 
     int calculateHIndex();
 
-    void printPapers();
-
-    void PrintPapers(Comparator c);
+    void printPapers(Comparator<ResearchPaper> c);
 }
